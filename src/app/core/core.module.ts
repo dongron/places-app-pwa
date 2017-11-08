@@ -3,6 +3,7 @@ import {CommonModule} from '@angular/common';
 import {NavigationComponent} from './navigation/navigation.component';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {MatButtonModule, MatCheckboxModule, MatToolbarModule} from "@angular/material";
+import {NavigatorStateService} from "../shared/navigator-state.service";
 
 @NgModule({
   imports: [
@@ -14,6 +15,9 @@ import {MatButtonModule, MatCheckboxModule, MatToolbarModule} from "@angular/mat
   ],
   declarations: [
     NavigationComponent
+  ],
+  providers: [
+    NavigatorStateService
   ],
   exports: [
     NavigationComponent,

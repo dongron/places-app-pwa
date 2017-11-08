@@ -1,3 +1,5 @@
 <mat-toolbar>
-  <span>My Application</span>
+  <i *ngIf="navigatorState?.isBackButton" class="material-icons">arrow_back</i>
+  <span class="navigation-title">{{navigatorState?.title}}</span>
+  <span class="spacer"></span>
 </mat-toolbar>
