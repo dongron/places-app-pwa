@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {PlacesService} from "../shared/places.service";
 
 @Component({
   selector: 'app-places-list',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PlacesListComponent implements OnInit {
 
-  constructor() { }
+  places;
+
+  constructor(private placesSrvice: PlacesService) {
+  }
 
   ngOnInit() {
+    this.places = {};
   }
 
 }

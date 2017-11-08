@@ -1,11 +1,26 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { NavigationComponent } from './navigation/navigation.component';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {NavigationComponent} from './navigation/navigation.component';
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {MatButtonModule, MatCheckboxModule, MatToolbarModule} from "@angular/material";
 
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
+    BrowserAnimationsModule,
+    MatButtonModule,
+    MatCheckboxModule,
+    MatToolbarModule,
   ],
-  declarations: [NavigationComponent]
+  declarations: [
+    NavigationComponent
+  ],
+  exports: [
+    NavigationComponent,
+    MatButtonModule,
+    MatCheckboxModule,
+    MatToolbarModule,
+  ]
 })
-export class CoreModule { }
+export class CoreModule {
+}
