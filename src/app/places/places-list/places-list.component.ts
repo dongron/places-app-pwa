@@ -22,9 +22,10 @@ export class PlacesListComponent implements OnInit {
   }
 
   getPlaces() {
-    console.warn('getting places');
-    this.placesService.getNearbyRestaurants().subscribe((data) => {
-      console.warn('data', data);
+    this.placesService.triggerGettingNearbyRestaurants();
+    this.placesService.getNearbyPlaces$.subscribe((data) => {
+      console.warn('places!', data);
+      this.places = data;
     });
   }
 
