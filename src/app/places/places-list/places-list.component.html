@@ -1,28 +1,15 @@
-<p>
-  dupa!
-</p>
 <div>
-  Places list
-  <!--<md-list>-->
-    <!--<h2 md-subheader>Your places</h2>-->
-    <!--<md-list-item *ngFor="let place of userPlacesList">-->
-      <!--<md-icon md-list-icon>person_pin_circle</md-icon>-->
-      <!--<h4 md-line>{{place.name}}</h4>-->
-      <!--<p md-line>{{place.city}}, {{place.street}} {{place.streetNr}}</p>-->
-      <!--<button md-raised-button (click)="_details(place)">-->
-        <!--Details-->
-      <!--</button>-->
-    <!--</md-list-item>-->
+  <!--places: {{places | json}}-->
+  <mat-nav-list *ngIf="places && places.length > 0">
+    <mat-list-item *ngFor="let place of places; let i = index" (click)="onItemClick(place)">
+      <img matListAvatar id="place-icon" src="{{place.icon}}">
+      <i *ngIf="getOpenStatusIcon(place) === 'lock'" class="fa fa-lock"></i>
+      <i *ngIf="getOpenStatusIcon(place) != 'lock'" class="fa fa-unlock"></i>
+      <h3 matLine>{{place.name}}</h3>
 
-    <!--<md-divider></md-divider>-->
-
-    <!--<h2 md-subheader>All places</h2>-->
-    <!--<md-list-item *ngFor="let place of allPlacesList">-->
-      <!--<md-icon md-list-icon>place</md-icon>-->
-      <!--<h4 md-line>{{place.name}}</h4>-->
-      <!--<p md-line>{{place.street}} {{place.streetNr}}</p>-->
-      <!--<div class="button-placeholder"></div>-->
-    <!--</md-list-item>-->
-
+      <div matLine>Distance:</div>
+      <div matLine>Rating: {{place.rating}}/5</div>
+    </mat-list-item>
+  </mat-nav-list>
 
 </div>
