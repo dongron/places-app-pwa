@@ -36,4 +36,8 @@ export class NavigationComponent implements OnInit, OnDestroy {
     this.router.navigate(['']);
   }
 
+  goBack() {
+    this.navigatorStateService.triggerGoBackAction();
+  }
+
 }

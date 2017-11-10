@@ -1,5 +1,5 @@
 <mat-toolbar>
-  <i *ngIf="navigatorState?.isBackButton" class="material-icons">arrow_back</i>
+  <i *ngIf="navigatorState?.isBackButton" class="material-icons" (click)="goBack()">arrow_back</i>
   <!--<mat-icon>arrow_back</mat-icon>-->
   <span class="navigation-title">{{navigatorState?.title}}</span>
   <span class="spacer"></span>

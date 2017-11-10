@@ -9,9 +9,11 @@ export class NavigatorStateService {
     title: 'List of places',
     isBackButton: false
   };
+  private goBackAction: any;
 
   constructor() {
-    // this.setListState();
+    this.goBackAction = function () {
+    };
   }
 
   getState$ = this.state.asObservable();
@@ -27,6 +29,15 @@ export class NavigatorStateService {
   setListState() {
     console.warn('set details state');
     this.state.next(Object.assign(this.startState));
+  }
+
+  setGoBackAction(action) {
+    this.goBackAction = action;
+  }
+
+  triggerGoBackAction() {
+    console.log('back action triggered');
+    this.goBackAction();
   }
 
 }
