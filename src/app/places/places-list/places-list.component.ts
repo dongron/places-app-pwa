@@ -1,6 +1,8 @@
 import {Component, NgZone, OnInit} from '@angular/core';
 import {PlacesService} from "../shared/places.service";
 import {NavigatorStateService} from "../../shared/navigator-state.service";
+import {PlacesSharedDataService} from "../shared/places-shared-data.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-places-list',
@@ -12,6 +14,8 @@ export class PlacesListComponent implements OnInit {
   places: any[];
 
   constructor(private placesService: PlacesService,
+              private placesSharedDataService: PlacesSharedDataService,
+              private router: Router,
               private navigatorStateService: NavigatorStateService,
               private zone: NgZone) {
   }
@@ -24,7 +28,6 @@ export class PlacesListComponent implements OnInit {
 
   getPlaces() {
     this.placesService.triggerGettingNearbyRestaurants();
-    // this.places = [{name: 'dupa'}, {name: 'dupa2'}];
     this.placesService.getNearbyPlaces$.subscribe((data) => {
       console.warn('map!', data.map(item => {
         return {
@@ -32,7 +35,7 @@ export class PlacesListComponent implements OnInit {
           lat: item.geometry.location.lat,
           lng: item.geometry.location.lng,
           rating: item.rating
-        }
+        };
       }));
       this.zone.run(() => {
         this.places = [...data];
@@ -49,7 +52,10 @@ export class PlacesListComponent implements OnInit {
   }
 
   onItemClick(item) {
-    console.log(item);
+    this.placesSharedDataService.setPlaceDetails(item);
+    this.router.navigate(['/', item.reference]).then((value) => {
+      console.warn(value);
+    });
   }
 
 }

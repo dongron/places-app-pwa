@@ -8,7 +8,8 @@ html[dir="rtl"] .icon {
 }
 
 i{
-  margin-right: 2vw;
+  padding-right: 2vw;
+  cursor: pointer;
 }
 .navigation-title {
   text-align: center;
