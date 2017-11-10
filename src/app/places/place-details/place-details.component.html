@@ -1,3 +1,20 @@
 <div class="main-view-container">
+  <!--<img src="{{place.photo}}">-->
 
+  <div id="place-photo" [ngStyle]="{'background-image': 'url(' + place.photo + ')'}">
+  </div>
+  <div class="text-container">
+    <div>
+      {{place.isOpen? 'Open' : 'Close'}}
+    </div>
+    <div>
+      {{place?.distance || '2'}} km
+    </div>
+    <div>
+      {{place.fullAddress}}
+    </div>
+    <div class="button-row">
+      <button mat-raised-button color="primary">CALL {{place.phone}}</button>
+    </div>
+  </div>
 </div>

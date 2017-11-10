@@ -22,15 +22,11 @@ export class PlacesService {
     gyms: 'gym'
   };
   headers = {
-    // 'Accept': 'application/json',
-    // 'Content-Type': 'application/json',
-    // 'Access-Control-Allow-Origin': 'http://localhost:4200',
-    // 'Access-Control-Allow-Credentials': 'true'
-    // 'Access-Control-Allow-Origin': true,
     'accept': 'application/json'
   };
   url = base.googlePlacesUrl;
   callback = '&callback=JSONP_CALLBACK';
+
   latitude = 50.824592;
   longitude = 19.105755;
   zoom = 12;
@@ -45,6 +41,14 @@ export class PlacesService {
   private setplacesObservable(value: any) {
     this.placesObservable.next(value);
   }
+
+  private placeDetailsObservable = new Subject<any>();
+  getPlaceDetails$ = this.placeDetailsObservable.asObservable();
+
+  private setplaceDetailsObservable(value: any) {
+    this.placeDetailsObservable.next(value);
+  }
+
 
   constructor(private http: Http,
               private jsonp: Jsonp,
@@ -77,6 +81,21 @@ export class PlacesService {
   private placesResponseCallback(results, status) {
     if (status === google.maps.places.PlacesServiceStatus.OK) {
       this.setplacesObservable(results);
+    }
+  }
+
+  triggerGettingPlaceDetails(placeId: string) {
+    console.warn('action for id', placeId);
+    let request = {
+      placeId: placeId
+    };
+    this.mapService.getDetails(request,
+      (place, status) => this.placeDetailsResponseCallback(place, status));
+  }
+
+  private placeDetailsResponseCallback(place, status) {
+    if (status === google.maps.places.PlacesServiceStatus.OK) {
+      this.setplaceDetailsObservable(place);
     }
   }
 

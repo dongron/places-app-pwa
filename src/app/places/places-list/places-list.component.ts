@@ -54,7 +54,7 @@ export class PlacesListComponent implements OnInit {
   onItemClick(item) {
     this.placesSharedDataService.setPlaceDetails(item);
     this.navigatorStateService.setGoBackAction(this.nextGoBackAction);
-    this.router.navigate(['/', item.reference])
+    this.router.navigate(['/', item.place_id])
       .then((routeSuccess) => {
       })
       .catch((routeErr) => {

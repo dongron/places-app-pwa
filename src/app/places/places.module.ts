@@ -4,7 +4,7 @@ import {PlacesListComponent} from './places-list/places-list.component';
 import {PlaceDetailsComponent} from './place-details/place-details.component';
 import {PlacesService} from "./shared/places.service";
 import {PlacesRoutingModule} from "./places-routing.module";
-import {MatIconModule, MatListModule} from "@angular/material";
+import {MatButtonModule, MatIconModule, MatListModule} from "@angular/material";
 import {PlacesSharedDataService} from "./shared/places-shared-data.service";
 
 @NgModule({
@@ -12,7 +12,8 @@ import {PlacesSharedDataService} from "./shared/places-shared-data.service";
     CommonModule,
     PlacesRoutingModule,
     MatListModule,
-    MatIconModule
+    MatIconModule,
+    MatButtonModule
   ],
   providers: [
     PlacesService,
